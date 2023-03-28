@@ -1,0 +1,25 @@
+
+<head>
+    <title>Кластеризация</title>
+    <link rel="stylesheet" href="clusteringStyles.css" type="text/css">
+    
+</head>
+
+<body>
+    <div>
+        <h1><span style="color: aqua;"> Алгоритмы</span> <span style="color: red;">кластеризации</span> </h1>
+    </div>
+    
+    <div class="grid-container">
+        <div class="x-axis"></div>
+        <div class="y-axis"></div>
+        <div class="posNull">0</div>
+        <div class = "x-arrow"></div>
+        <div class="y-arrow"></div>
+        <div class="origin"></div>
+        <div id="point-container"></div>
+    </div>
+    <button onclick="runKMeans()">Запустить k-средних алгоритм</button>
+    <label>Количество кластеров</label><input id="countK" type ="number" min="2">
+    <script src="importingScript.js"></script>
+</body>
