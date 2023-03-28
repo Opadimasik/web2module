@@ -1,0 +1,75 @@
+header {
+	padding: 200px 0;
+	background: #f3ff99;
+	background: -moz-linear-gradient(left, #f3ff99 0%, #f2b5b3 50%, #8081bd 100%);
+	background: -webkit-linear-gradient(left, #f3ff99 0%,#f2b5b3 50%,#8081bd 100%);
+	background: linear-gradient(to right, #f3ff99 0%,#f2b5b3 50%,#8081bd 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f3ff99', endColorstr='#8081bd',GradientType=1 );
+}
+
+footer {
+	padding: 100px 0;
+	background-color: antiquewhite;
+}
+
+.astar, .neuronweb, .genetic, .solutiontree, .claster, .ant{
+	padding: 150px 0 150px;
+}
+
+a {
+	color: black;
+	text-decoration: none;
+}
+
+.desc {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.btn {
+	position: relative;
+	overflow: hidden;
+	z-index: 1;
+	padding: 10px 40px;
+	margin: 0 20px;
+	font-family: 'Montserrat Alternates', sans-serif;
+	font-weight: 600;
+	line-height: 30px;
+	color: white;
+	font-size: 15px;
+	text-transform: uppercase;
+	background: #f5b08f;
+	border-width: 0;
+	box-shadow: 5px 5px 0 #532831;
+	outline: none;
+	cursor: pointer;
+	transition: 1.5s;
+}
+.btn:before, .btn:after {
+	content: "";
+	position: absolute;
+	height: 200px;
+	left: -50%;
+	margin-top: -100px;
+	top: 50%;
+	width: 200px;
+	border-radius: 50%;
+	opacity: 0.3;
+	z-index: -1;
+	transform: scale(0);
+}
+.btn:before {
+	background: #ffeede;
+	transition: .8s ease-out;
+}
+.btn:after {
+	transition: .4s ease-in .3s;
+}
+.btn:hover {
+	color: #532831;
+}
+.btn:hover:before, .btn:hover:after {
+	opacity: 1;
+	transform: scale(4);
+}
