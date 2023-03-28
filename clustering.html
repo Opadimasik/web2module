@@ -20,6 +20,7 @@
         <div id="point-container"></div>
     </div>
     <button onclick="runKMeans()">Запустить k-средних алгоритм</button>
-    <label>Количество кластеров</label><input id="countK" type ="number" min="2">
+    <label>Количество кластеров</label><input type="number" id="numClusters" min="1" max="10" value="3">
+    <button onclick="pointClear()">Очистить плоскость</button>
     <script src="importingScript.js"></script>
 </body>

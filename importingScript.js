@@ -1,6 +1,6 @@
 const pointContainer = document.getElementById('point-container');
 const gridContainer = document.querySelector('.grid-container');
-const k = 5; // количество кластеров
+
 function addPoint(x, y) {
     const circle = document.createElement('div');
     circle.classList.add('circle');
@@ -8,14 +8,20 @@ function addPoint(x, y) {
     circle.style.top = `${y}px`;
     pointContainer.appendChild(circle);
   }
-gridContainer.addEventListener('click', (event) => {
-  const x = event.pageX - event.currentTarget.offsetLeft;
-  const y = event.pageY - event.currentTarget.offsetTop;
-
-  addPoint(x, y);
-});
+function clickOnThePlane(){
+    gridContainer.addEventListener('click', (event) => {
+        const x = event.pageX - event.currentTarget.offsetLeft;
+        const y = event.pageY - event.currentTarget.offsetTop;
+      
+        addPoint(x, y);
+      });
+}
+clickOnThePlane();
 
 function runKMeans(){
+    const kInput = document.getElementById("numClusters");
+    const k = parseInt(kInput.value);   
+//k = parseInt(document.getElementById("numClusters").value);
 // Инициализация центров кластеров
 let centers = [];
 for (let i = 0; i < k; i++) {
@@ -92,5 +98,12 @@ function displayPoints() {
     recalculateCenters();
     displayPoints();
   }
+}
+function pointClear()
+{
+    pointContainer.innerHTML = '';
+
+  // Restart the k-means algorithm
+  runKMeans();
 }
 
