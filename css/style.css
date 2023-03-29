@@ -27,6 +27,10 @@ a {
 	justify-content: center;
 }
 
+a:hover {
+	color:black;
+}
+
 .btn {
 	position: relative;
 	overflow: hidden;
