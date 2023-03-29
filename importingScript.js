@@ -106,4 +106,4 @@ function pointClear()
   // Restart the k-means algorithm
   runKMeans();
 }
-
+// специаьно для Бездарей
