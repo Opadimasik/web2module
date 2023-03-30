@@ -1,0 +1,23 @@
+.cell{
+    width: 50px;
+    height: 50px;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid #000000;
+    margin: -5px;
+}
+.cell.wall{
+    background-color: black;
+}
+.cell.start{
+    background-color: green;
+}
+.cell.end{
+    background-color: red;
+}
+
+.cell.way{   
+    background-color: orange;
+}
+.cell.checked{
+    background-color: cornflowerblue;
+}
