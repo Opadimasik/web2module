@@ -18,9 +18,11 @@
         <div class="y-arrow"></div>
         <div class="origin"></div>
         <div id="point-container"></div>
+        <svg id="line-container"></svg>
     </div>
     <button onclick="runKMeans()">Запустить k-средних алгоритм</button>
     <label>Количество кластеров</label><input type="number" id="numClusters" min="1" max="10" value="3">
     <button onclick="pointClear()">Очистить плоскость</button>
+    <button onclick="clustP()">Запустить иерархический алгоритм</button>
     <script src="importingScript.js"></script>
 </body>
