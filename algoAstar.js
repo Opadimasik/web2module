@@ -1,134 +1,189 @@
-pathWidth = 10       //Width of the Maze Path
-wall = 2             //Width of the Walls between Paths
-outerWall = 2        //Width of the Outer most wall
-width = 10           //Number paths fitted horisontally
-height = 10         //Number paths fitted vertically
-delay = 1            //Delay between algorithm cycles
-x = width/2|0        //Horisontal starting position
-y = height/2|0       //Vertical starting position
-seed = Math.random()*100000|0//Seed for random numbers
-wallColor = '#d24'   //Color of the walls
-pathColor = '#222a33'//Color of the path
+var startCell = null;
+var endCell = null;
 
-randomGen = function(seed){
-	if(seed===undefined)var seed=performance.now()
-	return function(){
-    seed = (seed * 9301 + 49297) % 233280
-		return seed/233280
-	}
+function generateTable() {
+    let table = document.querySelector(".table");
+    table.innerHTML = "";
+    window.size = document.getElementById("size").value;
+    window.arr = new Array(size);
+    for (let i = 0; i < size; i++){
+      arr[i] = new Array(size);
+    }
+    for (let i = 0; i < size; i++) {
+      let row = document.createElement("div");
+      row.style.display="flex";
+      for (let j = 0; j < size; j++) {
+        arr[i][j] = document.createElement("div");
+        arr[i][j].classList.add("cell");
+        if (Math.random() < 0.3) {
+          arr[i][j].classList.add("wall");
+        }
+        row.appendChild(arr[i][j]);
+      }
+      table.appendChild(row);
+    }
+  }
+
+  function drawWay(path){
+
+    for (let i = 0; i < path.length; i++){
+        arr[path[i].x][path[i].y].classList.remove("start")
+        arr[path[i].x][path[i].y].classList.remove("searhingStart")
+        arr[path[i].x][path[i].y].classList.remove("end")
+        arr[path[i].x][path[i].y].classList.remove("searchingEnd")
+        arr[path[i].x][path[i].y].classList.remove("checked")
+        arr[path[i].x][path[i].y].classList.add("way")
+    }
+
+
+} 
+   function getDistance(x1, y1, x2, y2) {
+      let dx = Math.abs(x1 - x2);
+      let dy = Math.abs(y1 - y2);
+      return Math.sqrt(dx*dx + dy*dy);
+    }
+
+    function isValid(x, y) {
+      return (x >= 0 && x < size && y >= 0 && y < size && !arr[x][y].classList.contains("wall"));
+    }
+  function aStar() {
+
+    for (let i = 0; i < size; i++) {
+      for (let j = 0; j < size; j++) {
+        arr[i][j].g = Infinity; 
+        arr[i][j].h = getDistance(i, j, endCell.x , endCell.y); 
+        arr[i][j].f = Infinity;  
+        arr[i][j].parent = null;  
+        arr[i][j].x = i;
+        arr[i][j].y = j;
+      }
+    }
+
+    startCell.g = 0;
+    startCell.f = startCell.h;
+
+    let openSet = [startCell];
+    let closedSet = [];
+  
+    while (openSet.length > 0) {
+      let currentCell = openSet[0];
+      for (let i = 1; i < openSet.length; i++) {
+        if (openSet[i].f < currentCell.f) {
+          currentCell = openSet[i];
+        }
+      }
+
+      if (currentCell === endCell) {
+        let path = [endCell];
+        let parent = endCell.parent;
+        while (parent) {
+          path.push(parent);
+          parent = parent.parent;
+        }
+        path.reverse();
+        drawWay(path);
+      }
+      openSet.splice(openSet.indexOf(currentCell), 1);
+      closedSet.push(currentCell);
+
+      let neighbors = [      [currentCell.x-1, currentCell.y],
+        [currentCell.x, currentCell.y-1],
+        [currentCell.x+1, currentCell.y],
+        [currentCell.x, currentCell.y+1]
+      ];
+      for (let i = 0; i < neighbors.length; i++) {
+        let neighborX = neighbors[i][0];
+        let neighborY = neighbors[i][1];
+        if (!isValid(neighborX, neighborY) || closedSet.includes(arr[neighborX][neighborY])) {
+          continue;
+
+        }
+        let neighbor = arr[neighborX][neighborY];
+        let tentativeG = currentCell.g + 1;
+        if (!openSet.includes(neighbor)) {
+          openSet.push(neighbor);
+        } else if (tentativeG >= neighbor.g) {
+          continue;
+        }
+        neighbor.g = tentativeG;
+        neighbor.f = neighbor.g + neighbor.h;
+        neighbor.parent = currentCell;
+      }
+    }
+  
+    // нет пути
+  }
+
+
+function cleanCells(){
+
+    for (let i = 0; i < size; i++){
+        for(let j = 0; j < size; j++){
+            if (arr[i][j] == startCell && arr[i][j].classList.contains("way")){
+
+                arr[i][j].classList.remove("way")
+                arr[i][j].classList.add("start")
+            }
+            if (arr[i][j] == startCell && arr[i][j].classList.contains("end")){
+
+                arr[i][j].classList.remove("way")
+                arr[i][j].classList.add("end")
+            }
+            if(arr[i][j].classList.contains("way")){
+
+                arr[i][j].classList.remove("way");
+            }
+            if(arr[i][j].classList.contains("checked")){
+
+                arr[i][j].classList.remove("checked");
+            }
+        }
+    }
 }
 
-init = function(){
-    offset = pathWidth/2+outerWall
-    map = []
-    maze = document.getElementById('maze')
-    maze.innerHTML = ''
-    for(var i=0;i<height;i++){
-      var row = document.createElement('tr')
-      map[i] = []
-      for(var j=0;j<width;j++){
-        var cell = document.createElement('td')
-        cell.className = 'cell'
-        row.appendChild(cell)
-        map[i][j] = false
-      }
-      maze.appendChild(row)
+function cellClickEnd(){
+    for(let i = 0; i < size; i++){
+        for (let j = 0; j < size; j++){
+            if(arr[i][j].classList.contains('choosingStart') && arr[i][j] != startCell) {
+                arr[i][j].classList.remove("choosingStart");
+            }
+            if(!arr[i][j].classList.contains('wall') && !arr[i][j].classList.contains("start")){
+                arr[i][j].classList.add("choosingEnd")
+                arr[i][j].addEventListener('click', function(){
+                    if (endCell != null) {
+                        endCell.classList.remove("end");
+                        arr[i][j].classList.add("end")
+                        endCell = arr[i][j]
+                    }
+                    else{
+                    arr[i][j].classList.add("end");
+                    endCell = arr[i][j];
+                }
+                });
+            }
+        } 
     }
-    random = randomGen(seed)
-    map[y][x] = true
-    route = [[x,y]]
-  }
-init()
-
-inputWidth = document.getElementById('size')
-inputHeight = document.getElementById('size')
-inputPathWidth = document.getElementById('pathwidth')
-inputWallWidth = document.getElementById('wallwidth')
-inputOuterWidth = document.getElementById('outerwidth')
-inputPathColor = document.getElementById('pathcolor')
-inputWallColor = document.getElementById('wallcolor')
-inputSeed = document.getElementById('seed')
-buttonRandomSeed = document.getElementById('randomseed')
-
-settings = {
-  display: function(){
-    inputWidth.value = width
-    inputHeight.value = height
-    inputPathWidth.value = pathWidth
-    inputWallWidth.value = wall
-    inputOuterWidth.value = outerWall
-    inputPathColor.value = pathColor
-    inputWallColor.value = wallColor
-    inputSeed.value = seed
-  },
-  check: function(){
-    if(inputWidth.value != width||
-       inputHeight.value != height||
-       inputPathWidth.value != pathWidth||
-       inputWallWidth.value != wall||
-       inputOuterWidth.value != outerWall||
-       inputPathColor.value != pathColor||
-       inputWallColor.value != wallColor||
-       inputSeed.value != seed){
-      settings.update()
-    }
-  },
-  update: function(){
-    clearTimeout(timer)
-    width = parseFloat(inputWidth.value)
-    height = parseFloat(inputHeight.value)
-    pathWidth = parseFloat(inputPathWidth.value)
-    wall = parseFloat(inputWallWidth.value)
-    outerWall = parseFloat(inputOuterWidth.value)
-    pathColor = inputPathColor.value
-    wallColor = inputWallColor.value
-    seed = parseFloat(inputSeed.value)
-    x = width/2|0
-    y = height/2|0
-    init()
-    loop()
-  }
 }
 
-buttonRandomSeed.addEventListener('click',function(){
-  inputSeed.value = Math.random()*100000|0
-})
-
-loop = function(){
-    x = route[route.length-1][0]|0
-    y = route[route.length-1][1]|0
-    
-    var directions = [[1,0],[-1,0],[0,1],[0,-1]],
-        alternatives = []
-    
-    for(var i=0;i<directions.length;i++){
-      if(map[(directions[i][1]+y)*2]!=undefined&&
-         map[(directions[i][1]+y)*2][(directions[i][0]+x)*2]===false){
-        alternatives.push(directions[i])
-      }
+function cellClickStart(){
+    for(let i = 0; i < size; i++){
+        for (let j = 0; j < size; j++){
+            if(arr[i][j].classList.contains('choosingEnd') && arr[i][j] != endCell) {
+                arr[i][j].classList.remove("choosingEnd");
+            }
+            if(!arr[i][j].classList.contains('wall') && !arr[i][j].classList.contains("end")){
+                arr[i][j].classList.add("choosingStart")
+                arr[i][j].addEventListener('click', function(){
+                    if (startCell != null) {
+                        startCell.classList.remove("start");
+                        arr[i][j].classList.add("start")
+                        startCell= arr[i][j]
+                    }else{
+                    arr[i][j].classList.add("start");
+                    startCell = arr[i][j];
+                }
+                });
+            }
+        }
     }
-    
-    if(alternatives.length===0){
-      route.pop()
-      if(route.length>0){
-        var lastCell = document.getElementById(`${x}-${y}`)
-        lastCell.classList.remove("visited")
-        ctx.moveTo(route[route.length-1][0]*(pathWidth+wall)+offset,
-                   route[route.length-1][1]*(pathWidth+wall)+offset)
-        timer = setTimeout(loop,delay)
-      }
-      return;
-    }
-    direction = alternatives[random()*alternatives.length|0]
-    route.push([direction[0]+x,direction[1]+y])
-    var nextX = direction[0] + x;
-    var nextY = direction[1] + y;
-    var nextCell = document.getElementById(`${nextX}-${nextY}`);
-    nextCell.classList.add("visited");
-    ctx.lineTo(nextX*(pathWidth+wall)+offset,
-               nextY*(pathWidth+wall)+offset)
-    map[(direction[1]+y)*2][(direction[0]+x)*2] = true
-    map[direction[1]+y*2][direction[0]+x*2] = true
-    ctx.stroke()
-    timer = setTimeout(loop,delay)
-  }
+}
