@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title> Алгоритм A*</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+        <h1>Алгоритм A*</h1>
+        <label for="size">Выберете N:</label>
+        <input name="size" id="size" type="number" min="3" max="100">
+        <button onclick="createMap()"> Сгенерировать лабиринт</button>
+        <button onclick="addStartPoint()">Выбрать начальную точку</button>
+        <button onclick="addEndPoint()">Выбрать кончную точку</button>
+        <button onclick="addWall()">Добавить/убрать стену</button>
+        <button onclick="findPath()" id="findPath">Найти путь</button>
+        <button onclick="cleanPath()" id="cleanPath">Очистить путь</button>
+        <button onclick="cleanWalls()">Убрать все стены</button>
+        <canvas></canvas>
+        <script src="algoAstar.js"></script>
+        <script src="main.js"></script>
+        <script src="primMazeGenerator.js"></script>
+        <script src="animations.js"></script>
+</body>
+</html>
