@@ -294,7 +294,7 @@ function startHover(e){
                 colorCell(startx, starty, "green");
             }
             if(endx != -1){
-                colorCell(i, j, "red")
+                colorCell(endx, endy, "red")
             }
         }
     }
