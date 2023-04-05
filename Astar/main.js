@@ -22,8 +22,8 @@ function createMap(){
     
     canvas = document.querySelector("canvas");
     size = document.getElementById("size").value;
-    canvas.width = 1100;
-    canvas.height = 1100;
+    canvas.width = 800;
+    canvas.height = 800;
 
     cellSize = canvas.width / size;
     ctx = canvas.getContext("2d");
@@ -81,7 +81,7 @@ function addWall(){
 function startPos(e){
     painting = true;
     var x = e.pageX - 100;
-    var y = e.pageY - 165;
+    var y = e.pageY - 115;
     for(let i = 0; i < size; i++){
 
         for(let j = 0; j < size; j++){
@@ -161,7 +161,7 @@ function wallClick(e){
 function startClick(e){
 
     var x = e.pageX - 100;
-    var y = e.pageY - 165;
+    var y = e.pageY - 125;
 
     for (var i = 0; i < size; i++) {
         for (var j = 0; j < size; j++) {
@@ -213,7 +213,7 @@ function startClick(e){
 
 function endClick(e){
     var x = e.pageX - 100;
-    var y = e.pageY - 165;
+    var y = e.pageY - 125;
 
     for (var i = 0; i < size; i++) {
         for (var j = 0; j < size; j++) {
@@ -277,7 +277,7 @@ function cleanWalls(){
 }
 function startHover(e){
     var x = e.pageX - 100;
-    var y = e.pageY - 165;
+    var y = e.pageY - 125;
 
     for (var i = 0; i < size; i++) {
         for (var j = 0; j < size; j++) {
@@ -302,7 +302,7 @@ function startHover(e){
 
 function endHover(e){
     var x = e.pageX - 100;
-    var y = e.pageY - 165;
+    var y = e.pageY - 125;
 
     for (var i = 0; i < size; i++) {
         for (var j = 0; j < size; j++) {

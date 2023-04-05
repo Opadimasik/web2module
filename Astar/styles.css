@@ -3,7 +3,7 @@ body{
 }
 canvas {
     position: fixed;
-    margin-top: 90px;
+    margin-top: 50px;
     left: 100px;
     border: 5px;
 }
