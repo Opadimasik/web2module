@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Генетический алгоритм</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <label for="generations">Кол-во поколений</label>
+    <input name="generations" type="number" id="generations" min="1">
+    <label for="generations">Размер популяции</label>
+    <input name="generations" type="number" id="populationSize" min="1">
+    <label for="mutation">Процент мутации</label>
+    <input name="mutation" type="number" id="mutation" min="0" max="100">
+    <button onclick="geneticAlgo()">Найти путь</button>
+    <canvas id="myCanvas"  width="1000" height="800"></canvas>
+    <script src="main.js"></script>
+    <script src="geneticAlgo.js"></script>
+</body>
+</html>
