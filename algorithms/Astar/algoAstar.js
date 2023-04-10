@@ -213,7 +213,9 @@ function aStarAlgo(array, start, finish){
         let button = document.getElementById("cleanPath");
         button.disabled = true;
       }, time);
-
+			timeoutID[k] = setTimeout(function(){
+				alert("Путь не найден\nИзмените лабиринт")
+			}, time)
       
     }
     return;
