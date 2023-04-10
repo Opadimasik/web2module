@@ -87,7 +87,8 @@ function generateChild(firstParent, secondParent, mutationPercent, breakPoint){
         newChild.path[secondIndex] = temp;
     }
     newChild.cost = calculateFullPath(newChild.path);
-    drawPath(newChild.path, "black")
+    redrawCanvas();
+    drawPath(newChild.path)
     return newChild;
 }
 
@@ -122,5 +123,7 @@ function geneticAlgo(){
         population.pop();
         population.pop();
     }
-    drawPath(population[0].path, "red");
+    redrawCanvas();
+    drawFinalPath(population[0].path);
+    clearPathButton.disabled = false;
 }

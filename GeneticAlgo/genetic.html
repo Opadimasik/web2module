@@ -12,9 +12,12 @@
     <input name="generations" type="number" id="populationSize" min="1">
     <label for="mutation">Процент мутации</label>
     <input name="mutation" type="number" id="mutation" min="0" max="100">
-    <button onclick="geneticAlgo()">Найти путь</button>
+    <button id="findPath" onclick="geneticAlgo()">Найти путь</button>
+    <button id="claerCanvas" onclick="clearCanvas()">Очистить поле</button>
+    <button id="clearPath" onclick="clearPath()">Очистить путь</button>
     <canvas id="myCanvas"  width="1000" height="800"></canvas>
     <script src="main.js"></script>
     <script src="geneticAlgo.js"></script>
+    <script src="drawings.js"></script>
 </body>
 </html>
