@@ -18,11 +18,29 @@
         <div class="y-arrow"></div>
         <div class="origin"></div>
         <div id="point-container"></div>
-        <svg id="line-container"></svg>
     </div>
     <button onclick="runKMeans()">Запустить k-средних алгоритм</button>
     <label>Количество кластеров</label><input type="number" id="numClusters" min="1" max="10" value="3">
     <button onclick="pointClear()">Очистить плоскость</button>
+    <div class="grid-container">
+        <div class="x-axis"></div>
+        <div class="y-axis"></div>
+        <div class="posNull">0</div>
+        <div class = "x-arrow"></div>
+        <div class="y-arrow"></div>
+        <div class="origin"></div>
+        <div id="point-container1"></div>
+    </div>
     <button onclick="clustP()">Запустить иерархический алгоритм</button>
+    <button onclick="run()">Запустить c-средних алгоритм</button>
+    <div class="grid-container">
+        <div class="x-axis"></div>
+        <div class="y-axis"></div>
+        <div class="posNull">0</div>
+        <div class = "x-arrow"></div>
+        <div class="y-arrow"></div>
+        <div class="origin"></div>
+        <div id="point-container2"></div>
+    </div>
     <script src="importingScript.js"></script>
 </body>
