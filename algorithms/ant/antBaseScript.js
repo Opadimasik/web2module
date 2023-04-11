@@ -70,80 +70,89 @@ function DesiredPath(x1, y1, x2, y2) { // Создание класса DesiredP
 }
 
 document.getElementById("canvasP").onclick = function () {
-    if (clickLock && actionsPoint && (ways.length === 0)) {
-        let p = new Bubble(mouseX, mouseY);
-        points.push(p);
+  if (clickLock && actionsPoint && (ways.length === 0)) {
+      // создание точки и линий, если разрешено создание точек и нет сохраненных маршрутов
+      let p = new Bubble(mouseX, mouseY);
+      points.push(p);
 
-        let l = [];
-        if (points.length > 1)
-        {
-            for (let i = 0; i < points.length - 1; i++)
-            {
-                let proximity = 200/dist(points[i].x, points[i].y, points[points.length - 1].x, points[points.length - 1].y);
-                let save = new LinePath(points[i].x, points[i].y, points[points.length - 1].x, points[points.length - 1].y, "#fcff", proximity, 0.2);
-                l.push(save);
-                save = new LinePath(points[points.length - 1].x, points[points.length - 1].y, points[i].x, points[i].y, "#fcff", proximity, 0.2);
-                lines[i].push(save);
-            }
-        }
-        let save = new LinePath(points[points.length - 1].x, points[points.length - 1].y, points[points.length - 1].x,
-            points[points.length - 1].y, "#fcff", 0, 0);
-        l.push(save);
-        lines.push(l);
-    }
+      let l = [];
+      if (points.length > 1)
+      {
+          for (let i = 0; i < points.length - 1; i++)
+          {
+              // расчет близости точек и добавление линий между ними
+              let proximity = 200/dist(points[i].x, points[i].y, points[points.length - 1].x, points[points.length - 1].y);
+              let save = new LinePath(points[i].x, points[i].y, points[points.length - 1].x, points[points.length - 1].y, "#fcff", proximity, 0.2);
+              l.push(save);
+              save = new LinePath(points[points.length - 1].x, points[points.length - 1].y, points[i].x, points[i].y, "#fcff", proximity, 0.2);
+              lines[i].push(save);
+          }
+      }
+      let save = new LinePath(points[points.length - 1].x, points[points.length - 1].y, points[points.length - 1].x,
+          points[points.length - 1].y, "#fcff", 0, 0);
+      l.push(save);
+      lines.push(l);
+  }
 
-    if (clickLock && !actionsPoint && (ways.length === 0)) {
-        for (let i = 0; i < points.length; i++)
-        {
-            if(points[i].deletePoint())
-            {
-                points.splice(i,1);
-                lines[i].splice(0);
-                lines.splice(i, 1);
+  if (clickLock && !actionsPoint && (ways.length === 0)) {
+      // удаление точек и линий, если разрешено удаление точек и нет сохраненных маршрутов
+      for (let i = 0; i < points.length; i++)
+      {
+          if(points[i].deletePoint())
+          {
+              points.splice(i,1);
+              lines[i].splice(0);
+              lines.splice(i, 1);
 
-                for (let j = 0; j < lines.length; j++)
-                {
-                    lines[j].splice(i, 1);
-                }
-            }
-        }
-    }
+              for (let j = 0; j < lines.length; j++)
+              {
+                  lines[j].splice(i, 1);
+              }
+          }
+      }
+  }
 }
 
 function clickCreatePoints()
 {
-    actionsPoint = true;
+  // изменение флага, позволяющего создание точек
+  actionsPoint = true;
 }
 
 function clickDeletePoints()
 {
-    actionsPoint = false;
+  // изменение флага, позволяющего удаление точек
+  actionsPoint = false;
 }
 
 function clearGraphic()
 {
-    points.splice(0);
-    lines.splice(0);
-    ways.splice(0);
-    desPath.splice(0);
-    clickLock = true;
+  // очистка всех массивов точек, линий и маршрутов
+  points.splice(0);
+  lines.splice(0);
+  ways.splice(0);
+  desPath.splice(0);
+  clickLock = true;
 }
 
 function sumAll(index)
 {
-    let summa = 0;
+  let summa = 0;
 
-    for (let i = 0; i < lines[index].length; i++)
-    {
-        if (index !== i)
-        {
-            summa += Math.pow(lines[index][i].pheromone, alfa) * Math.pow(lines[index][i].proximity, beta);
-        }
-    }
+  for (let i = 0; i < lines[index].length; i++)
+  {
+      if (index !== i)
+      {
+          // суммирование значений для расчета вероятности передвижения муравьев
+          summa += Math.pow(lines[index][i].pheromone, alfa) * Math.pow(lines[index][i].proximity, beta);
+      }
+  }
 
-    return summa;
+  return summa;
 }
 
+// Функция probabilityCalculation вычисляет вероятность прохождения ребер муравьиной колонией
+// на основе феромонов и расстояний между вершинами. alfa и beta - коэффициенты влияния феромонов и расстояний соответственно.
 function probabilityCalculation()
 {
     for (let i = 0; i < lines.length; i++)
@@ -159,7 +168,8 @@ function probabilityCalculation()
         }
     }
 }
-
+// Функция probabilityCalculation вычисляет вероятность прохождения ребер муравьиной колонией
+// на основе феромонов и расстояний между вершинами. alfa и beta - коэффициенты влияния феромонов и расстояний соответственно.
 function bodyAnts()
 {
     if (ways.length === 0)
@@ -170,10 +180,11 @@ function bodyAnts()
 }
 
 function draw() {
-    fill("#FDF7E1");
+    fill("#9ee8b2");
     rect(0, 0, 600, 600);
     frameRate(50);
-
+// Функция createPath вычисляет следующую вершину в пути на основе вероятностей прохождения ребер.
+// Аргумент indexStart - индекс начальной вершины пути. Аргумент w - массив вершин, которые уже находятся в пути.
     function createPath(indexStart, w)
     {
         let end = 1;
@@ -201,7 +212,8 @@ function draw() {
             }
         }
     }
-
+// Функция createPathLength вычисляет длину пути по последовательности вершин.
+// Аргумент pointSequence - массив индексов вершин в порядке следования в пути.
     function createPathLength(pointSequence)
     {
         let lengthPath = 0;
@@ -217,7 +229,11 @@ function draw() {
 
         return lengthPath;
     }
-
+//Функция pheromoneUpdate() обновляет уровень феромонов на каждом ребре графа на основе качества решений, сгенерированных муравьями.
+//В первом цикле итерируются все ребра графа, и уровень феромонов на каждом ребре уменьшается на 36%.
+//Во втором цикле итерируются все решения (ways), и для каждого решения вычисляется дополнительный уровень феромонов на каждом ребре.
+//Дополнительный уровень феромонов вычисляется путем умножения длины перестановки решения на 50 и деления на длину пути решения.
+//Затем этот дополнительный уровень феромонов распределяется на каждое ребро, которое входит в перестановку решения.
     function pheromoneUpdate()
     {
         for (let i = 0; i < lines.length; i++)
