@@ -10,40 +10,41 @@
   <link rel="stylesheet" href="clusteringStyles.css" type="text/css">
 </head>
 <body>
-	<header>
-		<div class="container text-center">
-			<h1 class="display-1">algorithms/Clustering</h1>
-		</div>
-	</header>
+		<header>
+			<div class="container text-center">
+				<h1 class="display-1">algorithms/Clustering</h1>
+			</div>
+		</header>
 
-	<section class="algorithm">
-		<div class="container">
-			<div class="row">
-				<div class="col-sm-6 control-panel">
-    			<label>Количество кластеров</label><input type="number" id="numClusters" min="1" max="10" value="3">
-    			<button class="func_button" onclick="pointClear()">Очистить плоскость</button>
-					<button class="func_button" onclick="runKMeans()">Запустить k-средних</button>
-    			<button class="func_button" onclick="clustP()">Запустить иерархический</button>
-				</div>
-				<div class="col-sm-6 workspace">
-					<div class="grid-container">
-						<div class="x-axis"></div>
-						<div class="y-axis"></div>
-						<div class="posNull">0</div>
-						<div class = "x-arrow"></div>
-						<div class="y-arrow"></div>
-						<div class="origin"></div>
-						<div id="point-container"></div>
-						<svg id="line-container"></svg>
+		<section class="algorithm">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-6 control-panel">
+    				<label>Количество кластеров</label><input type="number" id="numClusters" min="1" max="10" value="3">
+    				<button class="func_button" onclick="pointClear()">Очистить плоскость</button>
+						<button class="func_button" onclick="runKMeans()">Запустить k-средних</button>
+    				<button class="func_button" onclick="clustP()">Запустить иерархический</button>
+					</div>
+					<div class="col-sm-6 workspace">
+						<div class="grid-container">
+							<div class="x-axis"></div>
+							<div class="y-axis"></div>
+							<div class="posNull">0</div>
+							<div class = "x-arrow"></div>
+							<div class="y-arrow"></div>
+							<div class="origin"></div>
+							<div id="point-container"></div>
+							<svg id="line-container"></svg>
+						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-	</section>
+		</section>
 
-	<footer class="text-center display-6">
-		<a class="return-to-startpage" href="../../index.html"><span>Вернуться на главную</span></a>
-	</footer>
-	<script src="scripts/bootstrap.bundle.min.js"></script>
-	<script src="importingScript.js"></script>
+		<footer class="text-center display-6">
+			<a class="return-to-startpage" href="../../index.html"><span>Вернуться на главную</span></a>
+		</footer>
+		<script src="scripts/bootstrap.bundle.min.js"></script>
+		<script src="importingScript.js"></script>
 </body>
+</html>
