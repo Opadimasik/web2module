@@ -9,6 +9,8 @@ let alfa = 2; // Вес феромона
 let beta = 4; // Вес расстояния
 let indexI = 0; // Индекс точки
 let bestPath = Infinity; // Начальный путь
+let lastPath = Infinity;
+let count = 0;
 
 function setup() {
     clickLock = true;
@@ -132,6 +134,8 @@ function clearGraphic()
   lines.splice(0);
   ways.splice(0);
   desPath.splice(0);
+  lastPath = Infinity;
+  count = 0;
   clickLock = true;
 }
 
@@ -258,7 +262,7 @@ function draw() {
             lines[ways[i].permutation[ways[i].permutation.length - 1]][ways[i].permutation[0]].pheromone += pheromoneAdditional;
         }
     }
-
+    
     function printPath()
     {
         for (let i = 0; i < ways[0].permutation.length - 1; i++)
@@ -274,9 +278,10 @@ function draw() {
 
     if (!clickLock)
     {
-        let generationsNumber = parseInt(document.getElementById('iterationNum').value);
-
-        if (indexI < generationsNumber) {
+        //let generationsNumber = parseInt(document.getElementById('iterationNum').value);
+        
+        //if (indexI < generationsNumber) {
+        if (indexI < 10000 && count < 100 ) {    
             ways = [];
 
             for (let i = 0; i < lines.length; i++) {
@@ -296,12 +301,17 @@ function draw() {
             }
 
             ways.sort((a, b) => (a.lengthPath - b.lengthPath));
-
+            if (lastPath == bestPath)
+            {
+                count++;
+            }
             if (ways[0].lengthPath < bestPath)
             {
                 desPath.splice(0);
                 printPath();
                 bestPath = ways[0].lengthPath;
+                lastPath = bestPath;
+                count = 0;
             }
             pheromoneUpdate();
             indexI++;
@@ -311,8 +321,11 @@ function draw() {
             clickLock = true;
             indexI = 0;
             bestPath = Infinity;
+            lastPath = Infinity;
+            count = 0;
         }
     }
+    
 
     for (let i = 0; i < lines.length; i++)
     {
