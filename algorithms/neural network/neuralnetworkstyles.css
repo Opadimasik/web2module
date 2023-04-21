@@ -1,10 +1,23 @@
-body{
-    background-color: white;
+.container {
+	padding: 50px 0;
 }
-canvas {
-    position: absolute;
-    margin: 0 auto;
-		display: block;
+
+#algorithm-cont {
+	display: flex;
+  flex-direction: row;
+	justify-content: space-around;
+}
+
+.result {
+	background-color: white;
+	border: black 1px solid;
+	padding: 25px;
+}
+
+.result-toolbar {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
 }
 
 button {
@@ -59,26 +72,12 @@ button:hover:before, button:hover:after {
 	transform: scale(4);
 }
 
-.control-panel {
-	height: 800px;
-	padding: 50px;
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-	align-items: center;
-}
-
-.workspace {
-	height: 800px;
+.algorithm {
 	background: #f3ff99;
 	background: -moz-linear-gradient(left, #f3ff99 0%, #f2b5b3 50%, #8081bd 100%);
 	background: -webkit-linear-gradient(left, #f3ff99 0%,#f2b5b3 50%,#8081bd 100%);
 	background: linear-gradient(to right, #f3ff99 0%,#f2b5b3 50%,#8081bd 100%);
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f3ff99', endColorstr='#8081bd',GradientType=1 );
-}
-
-header {
-	padding: 50px 0;
 }
 
 footer {

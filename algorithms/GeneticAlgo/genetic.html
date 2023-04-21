@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Генетический алгоритм</title>
+	<link rel="shortcut icon" href="../../img/favicon.ico" type="image/x-icon">
+	<link rel="stylesheet" href="../../css/bootstrap.min.css">
+  <link rel="stylesheet" href="styles.css" type="text/css">
+</head>
+<body>
+	<header>
+		<div class="container text-center">
+			<h1 class="display-1">algorithms/Genetic</h1>
+		</div>
+	</header>
+	<section class="algorithm">
+		<div class="workspace">
+			<div class="container">
+				<div class="row">
+					<div class="col-3 control-panel">
+						<div class="choose-generations-number">
+							<label for="generations">Кол-во поколений</label>
+							<input name="generations" type="number" id="generations" min="1">
+						</div>
+						<div class="choose-size">
+							<label for="generations">Размер популяции</label>
+							<input name="generations" type="number" id="populationSize" min="1">
+						</div>
+						<div class="choose-percentage">
+							<label for="mutation">Процент мутации</label>
+							<input name="mutation" type="number" id="mutation" min="0" max="100">
+						</div>
+						<div class="find-path">
+							<button id="findPath" onclick="geneticAlgo()">Найти путь</button>
+						</div>
+						<div class="clear-canvas">
+							<button id="claerCanvas" onclick="clearCanvas()">Очистить поле</button>
+						</div>
+						<div class="clear-path">
+							<button id="clearPath" onclick="clearPath()">Очистить путь</button>
+						</div>
+					</div>
+					<div class="col-9 canvas">
+						<canvas id="myCanvas"  width="1000" height="800"></canvas>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<footer class="text-center display-6">
+		<a class="return-to-startpage" href="../../index.html"><span>Вернуться на главную</span></a>
+	</footer>
+
+	<script src="scripts/bootstrap.bundle.min.js"></script>
+  <script src="main.js"></script>
+  <script src="geneticAlgo.js"></script>
+  <script src="drawings.js"></script>
+</body>
+</html>

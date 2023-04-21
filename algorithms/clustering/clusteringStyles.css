@@ -1,70 +1,138 @@
-.grid-container {
-    position: relative;
-    width: 500px;
-    height: 500px;
-    border: 1px solid black;
-  }
-  
-  .x-axis {
-    position: absolute;
-    width: 100%;
-    height: 2px;
-    background-color: black;
-    top: 50%;
-  }
-  
-  .y-axis {
-    position: absolute;
-    width: 2px;
-    height: 100%;
-    background-color: black;
-    left: 50%;
-  }
-  .posNull {
-    position: absolute;
-    top: 50%;
-    left: 48%;
-    width: auto;
-    color: blue;
-  }
-  .x-arrow {
-    content: "";
-    position: absolute;
-    width: 10px;
-    height: 10px;
-    border-top: 2px solid black;
-    border-right: 2px solid black;
-    transform: rotate(45deg);
-    top: calc(50% - 5px);
-    left: 97%;
-  }
-  .y-arrow {
-    content: "";
-    position: absolute;
-    width: 10px;
-    height: 10px;
-    border-top: 2px solid black;
-    border-right: 2px solid black;
-    transform: rotate(-45deg);
-    top: calc(0% + 5px);
-    left: 49%;
-  }
-  .origin {
-    position: absolute;
-    width: 5px;
-    height: 5px;
-    border-radius: 50%;
-    background-color: red;
-    top: calc(50% - 2px);
-    left: calc(50% - 2px);
-  }
+.container {
+	padding: 50px 0;
+}
 
-  .circle {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background-color: red;
-    position: absolute;
-  }
+.algorithm {
+	background: #f3ff99;
+	background: -moz-linear-gradient(left, #f3ff99 0%, #f2b5b3 50%, #8081bd 100%);
+	background: -webkit-linear-gradient(left, #f3ff99 0%,#f2b5b3 50%,#8081bd 100%);
+	background: linear-gradient(to right, #f3ff99 0%,#f2b5b3 50%,#8081bd 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f3ff99', endColorstr='#8081bd',GradientType=1 );
+}
+
+.control-panel {
+	background-color: white;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	justify-content: center;
+	border-radius: 10px;
+}
+
+.func_button {
+	padding: auto;
+	margin: 5% 5%;
+	border-radius: 5px;
+	width: auto;
+	height: 10%;
+	border: none;
+	display: flex;
+	align-items: center;
+	color: whitesmoke;
+	background: #1e5799;
+	background: -moz-linear-gradient(left, #1e5799 0%, #7db9e8 100%); 
+	background: -webkit-linear-gradient(left, #1e5799 0%,#7db9e8 100%); 
+	background: linear-gradient(to right, #1e5799 0%,#7db9e8 100%); 
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', endColorstr='#7db9e8',GradientType=1 );
+}
+
+.func_button:hover {
+	background: #1e5799;
+	background: -moz-linear-gradient(left, #7db9e8 0%, #1e5799 100%);
+	background: -webkit-linear-gradient(left, #7db9e8 0%, #1e5799 100%);
+	background: linear-gradient(to right, #7db9e8 0%, #1e5799 100%); 
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', endColorstr='#7db9e8',GradientType=1 );
+}
+
+footer {
+	padding: 40px 0;
+}
+
+.return-to-startpage {
+	text-decoration: none;
+	color:black;
+}
+
+.return-to-startpage:hover {
+	text-decoration: none;
+	color:black;
+}
+
+.workspace {
+	display: flex;
+	justify-content: center;
+}
+
+.grid-container {
+	background-color: white;
+  position: relative;
+  width: 500px;
+  height: 500px;
+  border: 1px solid black;
+}
   
+.x-axis {
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background-color: black;
+  top: 50%;
+}
   
+.y-axis {
+  position: absolute;
+  width: 2px;
+  height: 100%;
+  background-color: black;
+  left: 50%;
+}
+
+.posNull {
+  position: absolute;
+  top: 50%;
+  left: 48%;
+  width: auto;
+  color: blue;
+}
+
+.x-arrow {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-top: 2px solid black;
+  border-right: 2px solid black;
+  transform: rotate(45deg);
+  top: calc(50% - 5px);
+  left: 97%;
+}
+
+.y-arrow {
+  content: "";
+  position: absolute;
+	width: 10px;
+  height: 10px;
+  border-top: 2px solid black;
+  border-right: 2px solid black;
+  transform: rotate(-45deg);
+  top: calc(0% + 5px);
+  left: 49%;
+}
+
+.origin {
+	position: absolute;
+	width: 5px;
+	height: 5px;
+	border-radius: 50%;
+	background-color: red;
+	top: calc(50% - 2px);
+	left: calc(50% - 2px);
+}
+
+.circle {
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	background-color: red;
+	position: absolute;
+ }  

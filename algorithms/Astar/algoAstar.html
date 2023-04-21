@@ -2,21 +2,56 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title> Алгоритм A*</title>
+    <title>Алгоритм A*</title>
+		<link rel="stylesheet" href="../../css/bootstrap.min.css">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-        <h1>Алгоритм A*</h1>
-        <label for="size">Выберете N:</label>
-        <input name="size" id="size" type="number" min="3" max="100">
-        <button onclick="createMap()"> Сгенерировать лабиринт</button>
-        <button onclick="addStartPoint()">Выбрать начальную точку</button>
-        <button onclick="addEndPoint()">Выбрать кончную точку</button>
-        <button onclick="addWall()">Добавить/убрать стену</button>
-        <button onclick="findPath()" id="findPath">Найти путь</button>
-        <button onclick="cleanPath()" id="cleanPath">Очистить путь</button>
-        <button onclick="cleanWalls()">Убрать все стены</button>
-        <canvas></canvas>
+				<header>
+					<div class="container">
+						<h1 class="display-1 text-center">algorithms/A*</h1>
+					</div>
+				</header>
+				<section class="workspace">
+					<div class="container">
+						<div class="row">
+							<div class="col-3 control-panel">
+								<div class="choose-size">
+									<label for="size">Выберете N:</label>
+									<input name="size" id="size" type="number" min="3" max="100">
+								</div>
+								<div class="createMap">
+									<button onclick="createMap()"> Сгенерировать лабиринт</button>
+								</div>
+								<div class="addStartPoint">
+									<button onclick="addStartPoint()">Выбрать начальную точку</button>
+								</div>
+								<div class="addEndPoint">
+									<button onclick="addEndPoint()">Выбрать конечную точку</button>
+								</div>
+								<div class="addWall">
+									<button onclick="addWall()">Добавить/убрать стену</button>
+								</div>
+								<div class="findPath">
+									<button onclick="findPath()" id="findPath">Найти путь</button>
+								</div>
+								<div class="cleanPath">
+									<button onclick="cleanPath()" id="cleanPath">Очистить путь</button>
+								</div>
+								<div class="cleanWalls">
+									<button onclick="cleanWalls()">Убрать все стены</button>
+								</div>
+							</div>
+							<div class="col-9 canvas">
+								<canvas></canvas>
+							</div>
+						</div>
+					</div>
+				</section>
+				<footer class="text-center display-6">
+					<a class="return-to-startpage" href="../../index.html"><span>Вернуться на главную</span></a>
+				</footer>
+				<script src="scripts/bootstrap.bundle.min.js"></script>
         <script src="algoAstar.js"></script>
         <script src="main.js"></script>
         <script src="primMazeGenerator.js"></script>

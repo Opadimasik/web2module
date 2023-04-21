@@ -1,24 +1,28 @@
-function Queue(){
+class Queue {
+  constructor() {
     var a = [];
     var b = 0;
 
-    this.enqueue = function(b){
+    this.enqueue = function (b) {
       a.push(b);
-      a.sort(function(a,b){
-        if(a.f > b.f) return 1;
-        if(a.f < b.f) return -1
+      a.sort(function (a, b) {
+        if (a.f > b.f)
+          return 1;
+        if (a.f < b.f)
+          return -1;
         return 0;
       });
     };
-    this.dequeue = function(){
-      return a.shift(); 
+    this.dequeue = function () {
+      return a.shift();
     };
-    this.isEmpty = function(){
+    this.isEmpty = function () {
       return a.length == 0;
     };
-    this.getLength = function(){
+    this.getLength = function () {
       return a.length - b;
-    }
+    };
+  }
 }
 function Cell(){
     this.f;
@@ -27,10 +31,12 @@ function Cell(){
     this.parentx;
     this.parenty;
 }
-function triple(f, x, y){
+class triple {
+  constructor(f, x, y) {
     this.x = x;
     this.y = y;
     this.f = f;
+  }
 }
 function isValid(x, y){
     if(x >= 0 && x < size && y >= 0 && y < size) return true;
@@ -213,7 +219,9 @@ function aStarAlgo(array, start, finish){
         let button = document.getElementById("cleanPath");
         button.disabled = true;
       }, time);
-
+			timeoutID[k] = setTimeout(function(){
+				alert("Путь не найден\nИзмените лабиринт")
+			}, time)
       
     }
     return;

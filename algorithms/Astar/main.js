@@ -22,8 +22,8 @@ function createMap(){
     
     canvas = document.querySelector("canvas");
     size = document.getElementById("size").value;
-    canvas.width = 1100;
-    canvas.height = 1100;
+    canvas.width = 800;
+    canvas.height = 800;
 
     cellSize = canvas.width / size;
     ctx = canvas.getContext("2d");
@@ -80,8 +80,8 @@ function addWall(){
 
 function startPos(e){
     painting = true;
-    var x = e.pageX - 100;
-    var y = e.pageY - 165;
+    var x = e.clientX - canvas.offsetLeft;
+    var y = e.clientY - canvas.offsetTop;
     for(let i = 0; i < size; i++){
 
         for(let j = 0; j < size; j++){
@@ -125,8 +125,8 @@ function wallClick(e){
     if (!painting){
         return
     }
-    var x = e.pageX - 100;
-    var y = e.pageY - 165;
+		var x = e.clientX - canvas.offsetLeft;
+    var y = e.clientY - canvas.offsetTop;
     for(let i = 0; i < size; i++){
         for(let j = 0; j < size; j++){
 
@@ -142,7 +142,7 @@ function wallClick(e){
                         startx = -1;
                         starty = -1;
                     }
-                    else if(i == endx && j == endy ){
+                    else if(i == endx && j == endy){
                         hasEnd = false;
                         endx = -1; 
                         endy = -1;
@@ -160,9 +160,8 @@ function wallClick(e){
 
 function startClick(e){
 
-    var x = e.pageX - 100;
-    var y = e.pageY - 165;
-
+		var x = e.clientX - canvas.offsetLeft;
+		var y = e.clientY - canvas.offsetTop;
     for (var i = 0; i < size; i++) {
         for (var j = 0; j < size; j++) {
             if (i * cellSize < x && x < i * cellSize + cellSize && j * cellSize < y && y < j * cellSize + cellSize) {
@@ -212,8 +211,8 @@ function startClick(e){
 }
 
 function endClick(e){
-    var x = e.pageX - 100;
-    var y = e.pageY - 165;
+		var x = e.clientX - canvas.offsetLeft;
+		var y = e.clientY - canvas.offsetTop;
 
     for (var i = 0; i < size; i++) {
         for (var j = 0; j < size; j++) {
@@ -276,8 +275,8 @@ function cleanWalls(){
     }
 }
 function startHover(e){
-    var x = e.pageX - 100;
-    var y = e.pageY - 165;
+		var x = e.clientX - canvas.offsetLeft;
+		var y = e.clientY - canvas.offsetTop;
 
     for (var i = 0; i < size; i++) {
         for (var j = 0; j < size; j++) {
@@ -301,8 +300,8 @@ function startHover(e){
 }
 
 function endHover(e){
-    var x = e.pageX - 100;
-    var y = e.pageY - 165;
+		var x = e.clientX - canvas.offsetLeft;
+		var y = e.clientY - canvas.offsetTop;
 
     for (var i = 0; i < size; i++) {
         for (var j = 0; j < size; j++) {
