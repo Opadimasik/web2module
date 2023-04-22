@@ -16,14 +16,14 @@ function drawPath(array){
 
 function drawEdge(first, second){
 
-    time += 50; 
+    time += 20; 
     k++;
     timeoutID[k] = setTimeout(function(){
         ctx.beginPath(); 
         ctx.moveTo(first.x, first.y);
         ctx.lineTo(second.x, second.y);
         ctx.lineWidth = 3;
-        //ctx.strokeStyle = "black";
+        ctx.strokeStyle = "black";
         ctx.stroke();
     },time);
 }
@@ -36,7 +36,7 @@ function drawFinalPath(array){
 }
 
 function drawFinalEdge(first, second){
-    time += 50; 
+    time += 20; 
     k++;
     timeoutID[k] = setTimeout(function(){
         ctx.beginPath(); 
@@ -52,7 +52,7 @@ function drawFinalEdge(first, second){
 }
 
 function redrawCanvas() {
-    time += 50;
+    time += 20;
     k++;
     timeoutID[k] = setTimeout(function(){
         ctx.clearRect(0, 0, canvas.width, canvas.height); 
