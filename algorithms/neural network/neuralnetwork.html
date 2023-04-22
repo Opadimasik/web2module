@@ -24,8 +24,17 @@
 			<div class="result-toolbar">
 				<div class="result text-center display-1">X</div>
 				<div class="toolbar">
-					<button id="clear" onclick="">
+					<button id="clear" onclick="clearCanvas()">
 						<span>Очистить</span>
+					</button>
+					<button id="brush" onclick="useBrush()">
+						<span>Кисть</span>
+					</button>
+					<button id="pencil" onclick="usePencil()">
+						<span>Ручка</span>
+					</button>
+					<button id="pencil" onclick="recognize()">
+						<span>Распознать</span>
 					</button>
 				</div>
 			</div>
@@ -36,6 +45,6 @@
 		<a class="return-to-startpage" href="../../index.html"><span>Вернуться на главную</span></a>
 	</footer>
 	<script src="scripts/bootstrap.bundle.min.js"></script>
-	<script src="neuralnetwork.js"></script>
+	<script src="draw.js"></script>
 </body>
 </html>
