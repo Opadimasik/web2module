@@ -20,8 +20,10 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-sm-6 control-panel">
-    				<label>Количество кластеров</label><input type="number" id="numClusters" min="1" max="10" value="3">
-    				<button class="func_button" onclick="pointClear()">Очистить плоскость</button>
+						<div class="numberClaster">
+    					<label>Количество кластеров</label><input type="number" id="numClusters" min="1" max="10" value="3">
+						</div>
+						<button class="func_button" onclick="pointClear()">Очистить плоскость</button>
 						<button class="func_button" onclick="runKMeans()">Запустить k-средних</button>
     				<button class="func_button" onclick="clustP()">Запустить иерархический</button>
 					</div>

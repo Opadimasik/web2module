@@ -75,5 +75,5 @@ function clearCanvas() {
 	context.fillStyle = 'white';
 	context.fillRect(0, 0, 500, 500);
 	context.fillStyle = 'black';
-	document.getElementById("number").innerHTML = "";
+	document.getElementById("answer").innerHTML = "";
 }

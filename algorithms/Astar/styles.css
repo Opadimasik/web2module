@@ -8,6 +8,7 @@ canvas {
 }
 
 button {
+	width: 200px;
 	position: relative;
 	overflow: hidden;
 	z-index: 1;
