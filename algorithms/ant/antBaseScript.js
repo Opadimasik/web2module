@@ -301,7 +301,7 @@ function draw() {
             }
 
             ways.sort((a, b) => (a.lengthPath - b.lengthPath));
-            if (lastPath == bestPath)
+            if (lastPath === bestPath)
             {
                 count++;
             }
