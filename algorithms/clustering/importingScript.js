@@ -210,7 +210,7 @@ for (let i = 0; i < clusters.length; i++) {
   }
 }
 for (let i = 0; i < points.length; i++) {
-  const point = pointContainer1.children[i];
+  const point = pointContainer.children[i];
   const cluster = points[i].cluster;
   point.style.backgroundColor = `hsl(${cluster * 360 / clusters.length}, 100%, 50%)`;
 }
