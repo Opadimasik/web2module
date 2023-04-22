@@ -5,10 +5,12 @@ var amountOfpoints = 0;
 var timeoutID = [];
 var time = 0, k = 0;
 
-function Point(x, y, n){
-    this.x = x;
-    this.y = y;
-    this.number = n;
+class Point {
+    constructor(x, y, n) {
+        this.x = x;
+        this.y = y;
+        this.number = n;
+    }
 }
 
 var vertexes = new Array;
