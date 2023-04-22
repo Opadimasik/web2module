@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Дерево решений</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <input type="text" id="csv">
+    <button onclick="add()" id="control-button">Добавить оглавление</button>
+    <button onclick="generateTree()">Сгенерировать дерево</button>
+    <button onclick="testing()">Тестовые значения</button>
+    <input type="text" id="csv-find-decision">
+    <button onclick="findDecision()">Найти решение</button>
+    <button onclick="clearDecision()">Очистить путь</button>
+    <button onclick="clearAll()">Очистить всё</button>
+    <table id="table">
+        
+    </table>
+    
+    <canvas id="canvas"></canvas>
+</body>
+<script src="main.js"></script>
+<script src="decisionTree.js"></script>
+<script src="drawings.js"></script>
+<script src="testDataSet.js"></script>
+</html>

@@ -1,0 +1,24 @@
+#csv {
+    width: 32vw;
+    font-size: 2vh;
+}
+#csv-find-decision{
+    width: 32vw;
+    font-size: 2vh;
+}
+thead {
+    background-color: skyblue;
+    color: black;
+    text-align: center;
+}
+tbody{
+    background-color: white;
+    font-size: smaller;
+    text-align: center;
+}
+td{
+    height: 30px;
+    width: 50px;
+    border-color: rgba(152, 255, 150, 0.72);
+    margin: -2.5;
+}
